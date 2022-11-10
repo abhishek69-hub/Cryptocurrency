@@ -1,0 +1,45 @@
+
+import './App.css';
+
+import React,{ useEffect, useState } from 'react';
+import axios from 'axios';
+import Coins from './components/Coins';
+import Navbar from './components/Navbar';
+import { Routes,Route } from 'react-router-dom';
+import Coin from './routes/Coin';
+import   {CryptoState}  from './context/CryptoContext';
+
+
+
+function App() {
+
+
+  const {currency,setCurrency}=CryptoState();
+
+  const [coins,setCoins] = useState([]);
+  const url=`https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+
+  useEffect(()=>{
+    axios.get(url).then((response)=>{
+      setCoins(response.data)
+      console.log(response.data)
+    }).catch((error)=>{
+      // console.log(error)
+    })
+  },[currency])
+ 
+  return (
+    <div className='bg-stone-900'>
+
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Coins coins={coins} />} />
+        <Route path='/coin' element={<Coin />}>
+          <Route path=':coinId' element={<Coin />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
