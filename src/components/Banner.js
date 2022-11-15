@@ -15,7 +15,7 @@ const Banner = () => {
     }}>
       <div className='flex flex-col items-center'>
         <h1 className='heading text-5xl text-white block mx-auto p-0 m-0'>Coin Search</h1>
-        <p className='text-white'>Search for your favourite Crypto platform ends here.</p>
+        <p className='text-white w-10/12 sm:max-w-md'>Search for your favourite Crypto platform ends here.</p>
       </div>
 
       <div className='text-red-600 flex justify-center items-center text-xl mt-6'>

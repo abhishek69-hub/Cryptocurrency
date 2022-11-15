@@ -43,11 +43,11 @@ export default function Coin() {
                         <div className='coin-heading'>
                             {coin.image ? <img src={coin.image.small} alt='' /> : null}
                             <p>{coin.name}</p>
-                            {coin.symbol ? <p>{coin.symbol.toUpperCase()}/USD</p> : null}
+                            {coin.symbol ? <p>{coin.symbol.toUpperCase()}/INR</p> : null}
 
                         </div>
                         <div className='coin-price text-3xl font-bold'>
-                            {coin.market_data?.current_price ? <h1>₹{coin.market_data.current_price.inr.toLocaleString()}</h1> : null}
+                            {coin.market_data?.current_price ? <span className='text-xl md:text-2xl lg:text-4xl'>₹{coin.market_data.current_price.inr.toLocaleString()}</span> : null}
                         </div>
                     </div>
                 </div>
